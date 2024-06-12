@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyjarmke2grtw"]
+
+[ext_resource type="Texture2D" uid="uid://66f03wlq6jbb" path="res://Textures/Players/Beige/alienBeige_front.png" id="1_u3qke"]
+
+[node name="PlayerSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -161.0
+offset_right = 112.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerSprite" type="TextureRect" parent="Container"]
+layout_mode = 2
+texture = ExtResource("1_u3qke")
+stretch_mode = 3
+
+[node name="SelectButtonContainer" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="BtnLeft" type="Button" parent="Container/SelectButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="BtnRight" type="Button" parent="Container/SelectButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="NicknameContainer" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Container/NicknameContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "이름:"
+horizontal_alignment = 2
+
+[node name="LineEditNickName" type="LineEdit" parent="Container/NicknameContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "대화명을입력해주세요"

@@ -39,18 +39,18 @@ label_settings = SubResource("LabelSettings_y2kwq")
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Create Server"
+text = "방 만들기"
 
 [node name="BtnJoinServer" type="Button" parent="MenuItemContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Join Server"
+text = "방 들어가기"
 
 [node name="BtnQuit" type="Button" parent="MenuItemContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Quit"
+text = "종료"
 
 [connection signal="pressed" from="MenuItemContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
