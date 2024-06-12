@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://btbambln1p5j8" path="res://Textures/Players/Yellow/alienYellow_front.png" id="6_owwa5"]
 
 [node name="PlayerSetup" type="BoxContainer"]
+offset_right = 224.0
+offset_bottom = 348.0
 script = ExtResource("1_8ecov")
 player_textures = Array[Texture]([ExtResource("1_u3qke"), ExtResource("3_fgtuj"), ExtResource("4_8yclk"), ExtResource("5_g5v7w"), ExtResource("6_owwa5")])
 

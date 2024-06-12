@@ -53,4 +53,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "종료"
 
+[connection signal="pressed" from="MenuItemContainer/BtnCreateServer" to="." method="_on_btn_create_server_pressed"]
 [connection signal="pressed" from="MenuItemContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]

@@ -27,7 +27,7 @@ horizontal_alignment = 2
 [node name="LineEditServerName" type="LineEdit" parent="Container/ServerNameContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-placeholder_text = "Enter Room Name"
+placeholder_text = "서버 이름을 입력해주세요"
 alignment = 1
 
 [node name="PortNumberContainer" type="HBoxContainer" parent="Container"]
