@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyjarmke2grtw"]
+[gd_scene load_steps=7 format=3 uid="uid://dyjarmke2grtw"]
 
+[ext_resource type="Script" path="res://Scripts/PlayerSetup/PlayerSetup.gd" id="1_8ecov"]
 [ext_resource type="Texture2D" uid="uid://66f03wlq6jbb" path="res://Textures/Players/Beige/alienBeige_front.png" id="1_u3qke"]
+[ext_resource type="Texture2D" uid="uid://c20f2qchwiyq6" path="res://Textures/Players/Blue/alienBlue_front.png" id="3_fgtuj"]
+[ext_resource type="Texture2D" uid="uid://b8vw3x00s48mn" path="res://Textures/Players/Green/alienGreen_front.png" id="4_8yclk"]
+[ext_resource type="Texture2D" uid="uid://cfgco4sy23k1i" path="res://Textures/Players/Pink/alienPink_front.png" id="5_g5v7w"]
+[ext_resource type="Texture2D" uid="uid://btbambln1p5j8" path="res://Textures/Players/Yellow/alienYellow_front.png" id="6_owwa5"]
 
 [node name="PlayerSetup" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 403.0
+offset_top = 216.0
+offset_right = 403.0
+offset_bottom = 216.0
+script = ExtResource("1_8ecov")
+player_textures = Array[Texture]([ExtResource("1_u3qke"), ExtResource("3_fgtuj"), ExtResource("4_8yclk"), ExtResource("5_g5v7w"), ExtResource("6_owwa5")])
 
 [node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -22,7 +33,7 @@ grow_vertical = 2
 
 [node name="PlayerSprite" type="TextureRect" parent="Container"]
 layout_mode = 2
-texture = ExtResource("1_u3qke")
+texture = ExtResource("5_g5v7w")
 stretch_mode = 3
 
 [node name="SelectButtonContainer" type="HBoxContainer" parent="Container"]
@@ -52,3 +63,6 @@ custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "대화명을입력해주세요"
+
+[connection signal="pressed" from="Container/SelectButtonContainer/BtnLeft" to="." method="_on_btn_left_pressed"]
+[connection signal="pressed" from="Container/SelectButtonContainer/BtnRight" to="." method="_on_btn_right_pressed"]
