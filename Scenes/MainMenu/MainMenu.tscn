@@ -39,13 +39,13 @@ label_settings = SubResource("LabelSettings_y2kwq")
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "방 만들기"
+text = "서버 생성"
 
 [node name="BtnJoinServer" type="Button" parent="MenuItemContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "방 들어가기"
+text = "서버 입장"
 
 [node name="BtnQuit" type="Button" parent="MenuItemContainer"]
 custom_minimum_size = Vector2(150, 0)

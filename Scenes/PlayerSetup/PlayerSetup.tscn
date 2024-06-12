@@ -7,29 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://cfgco4sy23k1i" path="res://Textures/Players/Pink/alienPink_front.png" id="5_g5v7w"]
 [ext_resource type="Texture2D" uid="uid://btbambln1p5j8" path="res://Textures/Players/Yellow/alienYellow_front.png" id="6_owwa5"]
 
-[node name="PlayerSetup" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 403.0
-offset_top = 216.0
-offset_right = 403.0
-offset_bottom = 216.0
+[node name="PlayerSetup" type="BoxContainer"]
 script = ExtResource("1_8ecov")
 player_textures = Array[Texture]([ExtResource("1_u3qke"), ExtResource("3_fgtuj"), ExtResource("4_8yclk"), ExtResource("5_g5v7w"), ExtResource("6_owwa5")])
 
 [node name="Container" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -161.0
-offset_right = 112.0
-offset_bottom = 165.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="PlayerSprite" type="TextureRect" parent="Container"]
 layout_mode = 2
