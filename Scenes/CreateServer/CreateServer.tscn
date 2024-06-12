@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://csxwvepn0f0hc"]
+[gd_scene load_steps=5 format=3 uid="uid://csxwvepn0f0hc"]
 
+[ext_resource type="Script" path="res://Scripts/CreateServer/CreateServer.gd" id="1_et7g0"]
 [ext_resource type="PackedScene" uid="uid://dyjarmke2grtw" path="res://Scenes/PlayerSetup/PlayerSetup.tscn" id="1_yueid"]
 [ext_resource type="PackedScene" uid="uid://dyen46lnmt8xy" path="res://Scenes/ServerSetup/ServerSetup.tscn" id="2_7y8yn"]
 
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_et7g0")
 
 [node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -57,3 +59,5 @@ text = "생성"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "취소"
+
+[connection signal="pressed" from="Container/ButtonContainer/BtnCancel" to="." method="_on_btn_cancel_pressed"]

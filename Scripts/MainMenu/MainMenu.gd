@@ -1,3 +1,4 @@
+# MainMenu.gd 메인메뉴 화면 처리 스크립트
 extends Control
 
 # 서버 생성 버튼 클릭 시그널

@@ -1,3 +1,4 @@
+# PlayerSetup.gd 플레이어 설정 스크립트
 extends Control
 
 @export var player_textures: Array[Texture] # 플레이어 이미지(인스펙터에서 설정)
