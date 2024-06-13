@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://eb5ahbaxi2rb"]
+[gd_scene load_steps=4 format=3 uid="uid://eb5ahbaxi2rb"]
 
+[ext_resource type="Texture2D" uid="uid://66f03wlq6jbb" path="res://Textures/Players/Beige/alienBeige_front.png" id="1_0hegc"]
 [ext_resource type="Script" path="res://Scripts/ChatRoom/ChatRoom.gd" id="1_5vfxu"]
 [ext_resource type="PackedScene" uid="uid://bbanpguhwvu83" path="res://Scenes/ChatRoom/Background.tscn" id="2_2s84r"]
 
@@ -15,3 +16,53 @@ script = ExtResource("1_5vfxu")
 [node name="Background" parent="." instance=ExtResource("2_2s84r")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_0hegc")
+
+[node name="NameTag" type="Label" parent="Player"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -50.0
+offset_right = 20.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "이름"
+horizontal_alignment = 1
+
+[node name="MessageDialog" type="CenterContainer" parent="Player"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Player/MessageDialog"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Player/MessageDialog"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player/MessageDialog/BoxContainer"]
+layout_mode = 2
+text = "asdfas dfsadfsdfs adf
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TestTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]
