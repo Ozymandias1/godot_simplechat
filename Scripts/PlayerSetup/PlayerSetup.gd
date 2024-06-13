@@ -32,7 +32,10 @@ func get_player_info():
 	if player_name.is_empty():
 		player_name = "사용자%d" % randi_range(1, 100)
 
-	return { "player_name": player_name, "tex_index": selected_tex }
+	return {
+		"name": player_name,
+		"tex_index": selected_tex
+	}
 
 #func _on_line_edit_nick_name_text_submitted(new_text):
 	#print(new_text)

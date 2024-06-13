@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyen46lnmt8xy"]
+[gd_scene load_steps=3 format=3 uid="uid://dyen46lnmt8xy"]
+
+[ext_resource type="Script" path="res://Scripts/ServerSetup/ServerSetup.gd" id="1_7twj3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0lak"]
 font_size = 30
 
 [node name="ServerSetup" type="BoxContainer"]
+script = ExtResource("1_7twj3")
 
 [node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 2
