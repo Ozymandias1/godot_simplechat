@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://ha62ie3afklv"]
+
+[ext_resource type="Script" path="res://Scripts/ChatRoom/PlayerMessageItem.gd" id="1_xtakv"]
+
+[node name="PlayerMessageItem" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xtakv")
+
+[node name="MessageLabel" type="Label" parent="."]
+layout_mode = 2
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background" type="Panel" parent="MessageLabel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2

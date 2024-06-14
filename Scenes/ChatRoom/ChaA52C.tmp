@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://eb5ahbaxi2rb"]
+[gd_scene load_steps=4 format=3 uid="uid://eb5ahbaxi2rb"]
 
 [ext_resource type="Texture2D" uid="uid://66f03wlq6jbb" path="res://Textures/Players/Beige/alienBeige_front.png" id="1_0hegc"]
 [ext_resource type="Script" path="res://Scripts/ChatRoom/ChatRoom.gd" id="1_5vfxu"]
 [ext_resource type="PackedScene" uid="uid://bbanpguhwvu83" path="res://Scenes/ChatRoom/Background.tscn" id="2_2s84r"]
-[ext_resource type="Script" path="res://Scripts/ChatRoom/PlayerMessageItemContainer.gd" id="4_ho3t5"]
 
 [node name="ChatRoom" type="Control"]
 layout_mode = 3
@@ -38,15 +37,9 @@ grow_vertical = 0
 text = "이름"
 horizontal_alignment = 1
 
-[node name="MessageContainer" type="Control" parent="Player"]
-layout_mode = 3
-anchors_preset = 0
-offset_top = -40.0
-offset_bottom = -40.0
-script = ExtResource("4_ho3t5")
+[node name="Messages" type="Node2D" parent="Player"]
 
 [node name="TestTimer" type="Timer" parent="."]
-wait_time = 0.7
 autostart = true
 
 [connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]
