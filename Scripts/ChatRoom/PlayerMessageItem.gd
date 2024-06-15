@@ -13,7 +13,7 @@ func _ready():
 	self.scale = Vector2.ZERO
 	
 	# 플레이어 메시지 아이템은 tween을 사용하여 간단한 애니메이션을 적용한 보이기/숨기기 동작을 수행
-	var show_tween: Tween = get_tree().create_tween()
+	var show_tween: Tween = create_tween()
 	show_tween.set_ease(Tween.EASE_IN_OUT)
 	show_tween.set_trans(Tween.TRANS_ELASTIC)
 	show_tween.tween_property(self, "scale", Vector2.ONE, 0.25) # 0.25초동안 트윈 진행	
@@ -25,7 +25,7 @@ func _on_show_animation_finished():
 	await get_tree().create_timer(1.0).timeout
 	
 	# 숨기기 트윈
-	var hide_tween: Tween = get_tree().create_tween()
+	var hide_tween: Tween = create_tween()
 	hide_tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 0.25)
 	hide_tween.finished.connect(_on_hide_animation_finished)
 
