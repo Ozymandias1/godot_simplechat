@@ -9,7 +9,7 @@ script = ExtResource("1_lsdqd")
 
 [node name="PlayerAnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_jj3w0")
-animation = &"Move"
+animation = &"Idle"
 
 [node name="NameTag" type="Label" parent="."]
 anchors_preset = 7
