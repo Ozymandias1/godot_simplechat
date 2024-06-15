@@ -1,6 +1,6 @@
 extends Control
 
-@onready var message_container = $Player/MessageContainer
+@onready var player = $Player
 
 var test_messages: Array[String] = [
 	"I am trying to make multiple death messages and I want them to be chosen at random, how can I do that?",
@@ -16,4 +16,4 @@ var test_messages: Array[String] = [
 ]
 
 func _on_test_timer_timeout():
-	message_container.add_message(test_messages.pick_random())
+	player.show_message(test_messages.pick_random())

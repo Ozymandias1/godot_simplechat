@@ -1,0 +1,27 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://c1dnw8agr60db"]
+
+[ext_resource type="Texture2D" uid="uid://66f03wlq6jbb" path="res://Textures/Players/Beige/alienBeige_front.png" id="1_rg2lq"]
+[ext_resource type="Texture2D" uid="uid://ci563lkessvg6" path="res://Textures/Players/Beige/alienBeige_walk1.png" id="2_yqmws"]
+[ext_resource type="Texture2D" uid="uid://buvm7danmimsj" path="res://Textures/Players/Beige/alienBeige_walk2.png" id="3_gvmds"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rg2lq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yqmws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gvmds")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
