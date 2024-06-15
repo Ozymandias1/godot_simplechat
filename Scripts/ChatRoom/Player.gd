@@ -1,3 +1,4 @@
+# Player.gd 플레이어 관련(이동, 메시지) 처리
 extends Node2D
 
 @export var move_speed: float = 100
