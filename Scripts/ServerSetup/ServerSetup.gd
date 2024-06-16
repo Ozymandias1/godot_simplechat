@@ -12,6 +12,6 @@ func get_server_info():
 		port = 10000
 	
 	return {
-		"name": server_name,
-		"port": port
+		"RoomName": server_name,
+		"Port": port
 	}

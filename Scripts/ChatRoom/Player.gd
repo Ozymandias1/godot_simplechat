@@ -3,8 +3,18 @@ extends Node2D
 
 @export var move_speed: float = 100
 
+@onready var name_tag = $NameTag
 @onready var message_container = $MessageContainer
 @onready var player_anim_sprite = $PlayerAnimSprite
+
+# 플레이어 이름표 텍스트 설정
+func set_player_name_tag_text(player_name: String):
+	name_tag.text = player_name
+	
+# 플레이어 이름 스프라이트 설정
+func set_player_sprite(sprite_color: String):
+	var sprite_path: String = "res://Data/Sprite_Player_%s.tres" % sprite_color
+	player_anim_sprite.sprite_frames = load(sprite_path)
 
 # 플레이어 캐릭터 위에 메시지 보여주기
 func show_message(message: String):

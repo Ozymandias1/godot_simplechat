@@ -32,9 +32,11 @@ func get_player_info():
 	if player_name.is_empty():
 		player_name = "사용자%d" % randi_range(1, 100)
 
+	var sprite_names: Array[String] = ["Beige", "Blue", "Green", "Pink", "Yellow"]
+
 	return {
-		"name": player_name,
-		"tex_index": selected_tex
+		"Name": player_name,
+		"SpriteColor": sprite_names[selected_tex]
 	}
 
 #func _on_line_edit_nick_name_text_submitted(new_text):

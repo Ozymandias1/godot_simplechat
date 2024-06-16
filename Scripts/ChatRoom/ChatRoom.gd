@@ -1,6 +1,11 @@
+# ChatRoom.gd 채팅방
 extends Control
 
-@onready var player = $Player
+#@onready var player = $Player
+
+const PLAYER_TEMPLATE = preload("res://Scenes/ChatRoom/Player.tscn")
+
+@onready var camera_2d = $Camera2D
 
 var test_messages: Array[String] = [
 	"I am trying to make multiple death messages and I want them to be chosen at random, how can I do that?",
@@ -15,5 +20,26 @@ var test_messages: Array[String] = [
 	"켜고 끌수 있는 거 넘좋구만. 핵쟁이들이랑은 같이 하기 싫었는데",
 ]
 
-func _on_test_timer_timeout():
-	player.show_message(test_messages.pick_random())
+#func _on_test_timer_timeout():
+	#player.show_message(test_messages.pick_random())
+	
+# 스크립트 시작
+func _ready():
+	MultiplayManager.player_connected.connect(_on_player_connected)
+	
+	# 서버일경우 player_connected가 emit되지 않으므로 수동 호출
+	if multiplayer.is_server():
+		_on_player_connected(1, MultiplayManager.my_player_data)
+
+# 플레이어 연결 시그널
+func _on_player_connected(peer_id, player_info):
+	# 새 플레이어 생성후 이름과 스프라이트 설정
+	var new_player = PLAYER_TEMPLATE.instantiate()
+	new_player.name = str(peer_id)
+	new_player.call_deferred("set_player_name_tag_text", player_info.Name)
+	new_player.call_deferred("set_player_sprite", player_info.SpriteColor)
+	add_child(new_player)
+	
+	# 피어값이 1이면 본인 이므로 카메라를 설정한다.
+	if peer_id == 1:
+		camera_2d.reparent(new_player, false)
