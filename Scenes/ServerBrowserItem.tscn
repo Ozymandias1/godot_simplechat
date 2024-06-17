@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://d47olqa0a3xx"]
+
+[ext_resource type="Script" path="res://Scripts/ServerBrowserItem.gd" id="1_v6rbe"]
+
+[node name="ServerBrowserItem" type="HBoxContainer"]
+script = ExtResource("1_v6rbe")
+
+[node name="LabelRoomName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "방 제목
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelIpAddress" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP주소"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPort" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "포트번호"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnJoin" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "입장"

@@ -50,8 +50,4 @@ func create_chat_room(player_info: Dictionary, server_info: Dictionary, max_play
 	connected_players[1] = my_player_data	
 	player_connected.emit(1, my_player_data)
 	# 서버 프라우져 브로드 캐스트 시작
-	# server_info ↓
-	#return {
-		#"RoomName": server_name,
-		#"Port": port
-	#}
+	ServerBroadcaster.start_broadcast_my_server_info("127.0.0.1", server_info)

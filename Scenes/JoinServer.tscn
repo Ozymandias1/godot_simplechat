@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://5nmtv8lj2sc3"]
+
+[ext_resource type="Script" path="res://Scripts/JoinServer.gd" id="1_1j3b7"]
+[ext_resource type="PackedScene" uid="uid://dc7x6qlmrqa3c" path="res://Scenes/ServerBrowser.tscn" id="2_jlo2n"]
+[ext_resource type="PackedScene" uid="uid://dyjarmke2grtw" path="res://Scenes/PlayerSetup.tscn" id="2_palxp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3fwno"]
+font_size = 64
+
+[node name="JoinServer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1j3b7")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="Container"]
+layout_mode = 2
+text = "서버입장"
+label_settings = SubResource("LabelSettings_3fwno")
+horizontal_alignment = 1
+
+[node name="SetupContainer" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PlayerSetup" parent="Container/SetupContainer" instance=ExtResource("2_palxp")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ServerBrowser" parent="Container/SetupContainer" instance=ExtResource("2_jlo2n")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BtnCancel" type="Button" parent="Container/ButtonContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "취소"
+
+[connection signal="pressed" from="Container/ButtonContainer/BtnCancel" to="." method="_on_btn_cancel_pressed"]

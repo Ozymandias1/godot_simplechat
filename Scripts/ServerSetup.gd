@@ -1,3 +1,4 @@
+# ServerSetup.gd 서버 설정 스크립트
 extends BoxContainer
 
 @onready var line_edit_server_name = $Container/ServerNameContainer/LineEditServerName
