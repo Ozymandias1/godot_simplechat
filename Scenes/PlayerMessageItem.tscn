@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ha62ie3afklv"]
 
-[ext_resource type="Script" path="res://Scripts/ChatRoom/PlayerMessageItem.gd" id="1_xtakv"]
+[ext_resource type="Script" path="res://Scripts/PlayerMessageItem.gd" id="1_xtakv"]
 
 [node name="PlayerMessageItem" type="CenterContainer"]
 anchors_preset = 8

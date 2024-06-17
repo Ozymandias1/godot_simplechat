@@ -1,7 +1,7 @@
 # PlayerMessageItemContainer.gd 플레이어 메시지 아이템 컨테이너 스크립트
 extends Control
 
-const PLAYER_MESSAGE_ITEM = preload("res://Scenes/ChatRoom/PlayerMessageItem.tscn")
+const PLAYER_MESSAGE_ITEM = preload("res://Scenes/PlayerMessageItem.tscn")
 
 # 컨테이너에 메시지 항목 추가
 func add_message(message: String):

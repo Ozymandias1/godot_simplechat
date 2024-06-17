@@ -3,7 +3,7 @@ extends Control
 
 #@onready var player = $Player
 
-const PLAYER_TEMPLATE = preload("res://Scenes/ChatRoom/Player.tscn")
+const PLAYER_TEMPLATE = preload("res://Scenes/Player.tscn")
 
 @onready var camera_2d = $Camera2D
 

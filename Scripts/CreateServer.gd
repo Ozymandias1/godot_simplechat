@@ -13,9 +13,9 @@ func _on_btn_create_pressed():
 		server_info.RoomName = "%s의 서버" % player_info.Name
 	
 	# 멀티플레이 관리자의 대화방 생성함수 호출
-	MultiplayManager.load_scene("res://Scenes/ChatRoom/ChatRoom.tscn")
+	MultiplayManager.load_scene("res://Scenes/ChatRoom.tscn")
 	MultiplayManager.call_deferred("create_chat_room", player_info, server_info, 32)
 
 # 취소 버튼 클릭 시그널
 func _on_btn_cancel_pressed():
-	get_tree().change_scene_to_file("res://Scenes/MainMenu/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://gkv1lf5rx5go"]
 
-[ext_resource type="Script" path="res://Scripts/ChatRoom/Player.gd" id="1_lsdqd"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lsdqd"]
 [ext_resource type="SpriteFrames" uid="uid://c1dnw8agr60db" path="res://Data/Sprite_Player_Beige.tres" id="2_jj3w0"]
-[ext_resource type="Script" path="res://Scripts/ChatRoom/PlayerMessageItemContainer.gd" id="3_wlt1o"]
+[ext_resource type="Script" path="res://Scripts/PlayerMessageItemContainer.gd" id="3_wlt1o"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_lsdqd")

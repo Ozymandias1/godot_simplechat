@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://eb5ahbaxi2rb"]
 
-[ext_resource type="Script" path="res://Scripts/ChatRoom/ChatRoom.gd" id="1_5vfxu"]
-[ext_resource type="PackedScene" uid="uid://bbanpguhwvu83" path="res://Scenes/ChatRoom/Background.tscn" id="2_2s84r"]
+[ext_resource type="Script" path="res://Scripts/ChatRoom.gd" id="1_5vfxu"]
+[ext_resource type="PackedScene" uid="uid://bbanpguhwvu83" path="res://Scenes/Background.tscn" id="2_2s84r"]
 
 [node name="ChatRoom" type="Control"]
 layout_mode = 3

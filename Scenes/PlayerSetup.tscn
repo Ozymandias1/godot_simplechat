@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dyjarmke2grtw"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerSetup/PlayerSetup.gd" id="1_8ecov"]
+[ext_resource type="Script" path="res://Scripts/PlayerSetup.gd" id="1_8ecov"]
 [ext_resource type="Texture2D" uid="uid://66f03wlq6jbb" path="res://Textures/Players/Beige/alienBeige_front.png" id="1_u3qke"]
 [ext_resource type="Texture2D" uid="uid://c20f2qchwiyq6" path="res://Textures/Players/Blue/alienBlue_front.png" id="3_fgtuj"]
 [ext_resource type="Texture2D" uid="uid://b8vw3x00s48mn" path="res://Textures/Players/Green/alienGreen_front.png" id="4_8yclk"]

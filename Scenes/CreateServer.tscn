@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://csxwvepn0f0hc"]
 
-[ext_resource type="Script" path="res://Scripts/CreateServer/CreateServer.gd" id="1_et7g0"]
-[ext_resource type="PackedScene" uid="uid://dyjarmke2grtw" path="res://Scenes/PlayerSetup/PlayerSetup.tscn" id="1_yueid"]
-[ext_resource type="PackedScene" uid="uid://dyen46lnmt8xy" path="res://Scenes/ServerSetup/ServerSetup.tscn" id="2_7y8yn"]
+[ext_resource type="Script" path="res://Scripts/CreateServer.gd" id="1_et7g0"]
+[ext_resource type="PackedScene" uid="uid://dyjarmke2grtw" path="res://Scenes/PlayerSetup.tscn" id="1_yueid"]
+[ext_resource type="PackedScene" uid="uid://dyen46lnmt8xy" path="res://Scenes/ServerSetup.tscn" id="2_7y8yn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3fwno"]
 font_size = 64

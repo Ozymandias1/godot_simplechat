@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyen46lnmt8xy"]
 
-[ext_resource type="Script" path="res://Scripts/ServerSetup/ServerSetup.gd" id="1_7twj3"]
+[ext_resource type="Script" path="res://Scripts/ServerSetup.gd" id="1_7twj3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f0lak"]
 font_size = 30
