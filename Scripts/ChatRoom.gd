@@ -31,15 +31,16 @@ func _ready():
 	if multiplayer.is_server():
 		_on_player_connected(1, MultiplayManager.my_player_data)
 
-# 플레이어 연결 시그널
+# 플레이어 접속시 호출되는 시그널
 func _on_player_connected(peer_id, player_info):
 	# 새 플레이어 생성후 이름과 스프라이트 설정
 	var new_player = PLAYER_TEMPLATE.instantiate()
 	new_player.name = str(peer_id)
-	new_player.call_deferred("set_player_name_tag_text", player_info.Name)
-	new_player.call_deferred("set_player_sprite", player_info.SpriteColor)
 	add_child(new_player)
 	
-	# 피어값이 1이면 본인 이므로 카메라를 설정한다.
-	if peer_id == 1:
+	new_player.set_player_name_tag_text(player_info.Name)
+	new_player.set_player_sprite(player_info.SpriteColor)
+	
+	# 파라미터의 피어값이 본인의 피어값과 같으면 카메라를 부착한다.
+	if peer_id == multiplayer.get_unique_id():
 		camera_2d.reparent(new_player, false)

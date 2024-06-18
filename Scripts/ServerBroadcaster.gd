@@ -22,7 +22,8 @@ func start_broadcast_my_server_info(server_ip: String, server_info: Dictionary):
 	# 나의 서버정보 방송을 위해 끝자리 주소를 255로 설정한다.
 	broadcaster = PacketPeerUDP.new()
 	broadcaster.set_broadcast_enabled(true)
-	broadcaster.set_dest_address(get_broadcast_address(server_ip), broadcast_listen_port)
+	var broadcast_server_ip = get_broadcast_address(server_ip)
+	broadcaster.set_dest_address(broadcast_server_ip, broadcast_listen_port)
 
 	var is_succeeded = broadcaster.bind(broadcast_bind_port) # 브로드캐스트로 바인딩
 	if is_succeeded == OK:
@@ -73,11 +74,11 @@ func _on_timeout_listening_server_info():
 	get_server_info_finished.emit()
 
 # 스크립트 업데이트
-func _process(delta):
+func _process(_delta):
 	# 매 프레임마다 리스너가 유효하면 가져올 서버 정보가 있는지 체크하여 처리한다.
 	if broadcast_listener and broadcast_listener.get_available_packet_count() > 0:
 		var server_ip: String = broadcast_listener.get_packet_ip()
-		var port: int = broadcast_listener.get_packet_port()
+		var _port: int = broadcast_listener.get_packet_port()
 		var data_bytes: PackedByteArray = broadcast_listener.get_packet()
 		var data: String = data_bytes.get_string_from_utf8()
 		var server_info: Dictionary = JSON.parse_string(data)

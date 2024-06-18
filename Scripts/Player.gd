@@ -7,6 +7,10 @@ extends Node2D
 @onready var message_container = $MessageContainer
 @onready var player_anim_sprite = $PlayerAnimSprite
 
+# 노드 트리 추가시 호출
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
+
 # 플레이어 이름표 텍스트 설정
 func set_player_name_tag_text(player_name: String):
 	name_tag.text = player_name
@@ -22,11 +26,12 @@ func show_message(message: String):
 
 # 업데이트
 func _process(delta):
-	var horizontal_input = Input.get_axis("Move Left", "Move Right")
-	var vertical_input = Input.get_axis("Move Up", "Move Down") # 아래쪽이 positive한 방향이므로
-	self.position += Vector2(horizontal_input, vertical_input) * move_speed * delta
+	if is_multiplayer_authority(): # 권한이 있는 경우만 입력 처리를 수행
+		var horizontal_input = Input.get_axis("Move Left", "Move Right")
+		var vertical_input = Input.get_axis("Move Up", "Move Down") # 아래쪽이 positive한 방향이므로
+		self.position += Vector2(horizontal_input, vertical_input) * move_speed * delta
 
-	process_player_animation()
+		process_player_animation()
 
 # 플레이어 애니메이션 처리
 func process_player_animation():

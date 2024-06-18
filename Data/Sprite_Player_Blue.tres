@@ -1,14 +1,14 @@
 [gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://0ofyxbaqmnuc"]
 
-[ext_resource type="Texture2D" uid="uid://66f03wlq6jbb" path="res://Textures/Players/Beige/alienBeige_front.png" id="1_nk7fo"]
-[ext_resource type="Texture2D" uid="uid://ci563lkessvg6" path="res://Textures/Players/Beige/alienBeige_walk1.png" id="2_hbuvo"]
-[ext_resource type="Texture2D" uid="uid://buvm7danmimsj" path="res://Textures/Players/Beige/alienBeige_walk2.png" id="3_gwsv1"]
+[ext_resource type="Texture2D" uid="uid://c20f2qchwiyq6" path="res://Textures/Players/Blue/alienBlue_front.png" id="1_wsipk"]
+[ext_resource type="Texture2D" uid="uid://85hxu1dtef1t" path="res://Textures/Players/Blue/alienBlue_walk1.png" id="2_py35o"]
+[ext_resource type="Texture2D" uid="uid://qfqaqnfymofg" path="res://Textures/Players/Blue/alienBlue_walk2.png" id="3_dlpgd"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_nk7fo")
+"texture": ExtResource("1_wsipk")
 }],
 "loop": true,
 "name": &"Idle",
@@ -16,10 +16,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hbuvo")
+"texture": ExtResource("2_py35o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_gwsv1")
+"texture": ExtResource("3_dlpgd")
 }],
 "loop": true,
 "name": &"Move",
