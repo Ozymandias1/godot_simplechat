@@ -87,12 +87,3 @@ func _on_connected_ok():
 # 접속 플레이데이터에 캐릭터 노드 인스턴스 설정
 func assign_player_character_node(peer_id, node_instance):
 	connected_players[peer_id]["PlayerNodeInstance"] = node_instance
-
-#func send_message(message_text):
-	#var caller_peer_id = multiplayer.get_unique_id()
-	#send_message_to_other_player.rpc_id(caller_peer_id, message_text)
-#
-#@rpc("any_peer", "reliable", "call_local")
-#func send_message_to_other_player(message_text):
-	#var peer_id = multiplayer.get_remote_sender_id()
-	#connected_players[peer_id]["PlayerNodeInstance"].show_message(message_text)

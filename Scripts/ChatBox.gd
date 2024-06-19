@@ -12,7 +12,7 @@ const CHAT_BOX_MESSAGE_ITEM = preload("res://Scenes/ChatBoxMessageItem.tscn")
 # 스크립트 시작
 func _ready():
 	MultiplayManager.player_connected.connect(_on_player_connected)
-	
+
 	# 메시지가 입력되면 스크롤컨테이너의 스크롤 값을 조정해주기 위한 시그널 연결
 	scroll_container_chat_log.get_v_scroll_bar().changed.connect(_on_chatlog_v_scroll_changed)
 
@@ -29,12 +29,10 @@ func _add_message_to_chatlog(message_text: String, is_player_message: bool = fal
 	if is_player_message:
 		var peer_id = multiplayer.get_remote_sender_id()
 		MultiplayManager.connected_players[peer_id]["PlayerNodeInstance"].show_message(message_text)
-		
+
 # 전송 버튼 클릭 시그널
 func _on_btn_send_pressed():
-	if line_edit_input_message.text.is_empty() == false:
-		#_add_message_to_chatlog(line_edit_input_message.text)
-		line_edit_input_message.text = ""
+	_on_line_edit_input_message_text_submitted(line_edit_input_message.text)
 
 # 채팅로그 스크롤 컨테이너의 스크롤변화 이벤트 이그널
 func _on_chatlog_v_scroll_changed():
@@ -54,9 +52,24 @@ func _on_player_connected(_peer_id, player_info):
 
 # 텍스트 입력 완료 처리 시그널
 func _on_line_edit_input_message_text_submitted(new_text):
-	var message_text = "%s:%s" % [MultiplayManager.my_player_data.Name, new_text]
-	_add_message_to_chatlog.rpc(message_text, true)
-	line_edit_input_message.text = ""
-	
-	## 다른 플레이어에게 캐릭터머리위 메시지 표출 신호 전송
-	#MultiplayManager.send_message(new_text)
+	if line_edit_input_message.text.is_empty() == false:
+		var message_text = "%s:%s" % [MultiplayManager.my_player_data.Name, new_text]
+		_add_message_to_chatlog.rpc(message_text, true)
+
+		line_edit_input_message.text = ""
+		line_edit_input_message.release_focus()
+
+# 텍스트 입력 컨트롤 포커스 잃었을때의 처리
+func _on_line_edit_input_message_focus_exited():
+	var player_self = MultiplayManager.my_player_data["PlayerNodeInstance"]
+	player_self.is_move_enabled = true
+
+# 핸들링 되지 않은 입력 처리
+func _unhandled_key_input(event):
+	if event is InputEventKey:
+		if event.pressed and (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER):
+			line_edit_input_message.grab_focus() # 엔터키가 눌리면 메시지 텍스트 입력창에 포커스
+
+			# 메시지 입력중에는 플레이어 캐릭터의 이동을 막는다.
+			var player_self = MultiplayManager.my_player_data["PlayerNodeInstance"]
+			player_self.is_move_enabled = false
