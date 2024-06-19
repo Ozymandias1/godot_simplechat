@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://eb5ahbaxi2rb"]
+[gd_scene load_steps=4 format=3 uid="uid://eb5ahbaxi2rb"]
 
 [ext_resource type="Script" path="res://Scripts/ChatRoom.gd" id="1_5vfxu"]
 [ext_resource type="PackedScene" uid="uid://bbanpguhwvu83" path="res://Scenes/Background.tscn" id="2_2s84r"]
+[ext_resource type="PackedScene" uid="uid://d01oylvykem61" path="res://Scenes/ChatBox.tscn" id="3_wo6cv"]
 
 [node name="ChatRoom" type="Control"]
 layout_mode = 3
@@ -13,6 +14,10 @@ grow_vertical = 2
 script = ExtResource("1_5vfxu")
 
 [node name="Background" parent="." instance=ExtResource("2_2s84r")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ChatBox" parent="CanvasLayer" instance=ExtResource("3_wo6cv")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

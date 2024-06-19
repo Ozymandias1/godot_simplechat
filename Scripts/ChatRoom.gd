@@ -3,6 +3,8 @@ extends Control
 
 #@onready var player = $Player
 
+signal on_player_character_node_created(peer_id, node_instance)
+
 const PLAYER_TEMPLATE = preload("res://Scenes/Player.tscn")
 
 @onready var camera_2d = $Camera2D
@@ -26,6 +28,7 @@ var test_messages: Array[String] = [
 # 스크립트 시작
 func _ready():
 	MultiplayManager.player_connected.connect(_on_player_connected)
+	on_player_character_node_created.connect(MultiplayManager.assign_player_character_node)
 	
 	# 서버일경우 player_connected가 emit되지 않으므로 수동 호출
 	if multiplayer.is_server():
@@ -40,6 +43,8 @@ func _on_player_connected(peer_id, player_info):
 	
 	new_player.set_player_name_tag_text(player_info.Name)
 	new_player.set_player_sprite(player_info.SpriteColor)
+	
+	on_player_character_node_created.emit(peer_id, new_player)
 	
 	# 파라미터의 피어값이 본인의 피어값과 같으면 카메라를 부착한다.
 	if peer_id == multiplayer.get_unique_id():

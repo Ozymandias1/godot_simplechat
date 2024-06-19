@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://d01oylvykem61"]
+
+[ext_resource type="Script" path="res://Scripts/ChatBox.gd" id="1_1rmot"]
+
+[node name="ChatBox" type="Control"]
+layout_mode = 3
+anchor_top = 0.5
+anchor_right = 0.4
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_bottom = -10.0
+grow_vertical = 0
+script = ExtResource("1_1rmot")
+
+[node name="ChatBoxBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainerChatLog" type="ScrollContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChatLog" type="VBoxContainer" parent="Container/ScrollContainerChatLog"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Controls" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="LineEditInputMessage" type="LineEdit" parent="Container/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "메시지를 입력해 주십시오..."
+
+[node name="BtnSend" type="Button" parent="Container/Controls"]
+layout_mode = 2
+text = "전송"
+
+[connection signal="text_submitted" from="Container/Controls/LineEditInputMessage" to="." method="_on_line_edit_input_message_text_submitted"]
+[connection signal="pressed" from="Container/Controls/BtnSend" to="." method="_on_btn_send_pressed"]

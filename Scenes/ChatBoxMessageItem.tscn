@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d0krf4lfbuea6"]
+
+[node name="ChatBoxMsgItem" type="Label"]
+custom_minimum_size = Vector2(1, 1)
+text = "메시지"
+autowrap_mode = 1

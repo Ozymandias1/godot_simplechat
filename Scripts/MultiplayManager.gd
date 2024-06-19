@@ -9,7 +9,8 @@ var connected_players = {}
 # 나의 정보
 var my_player_data = {
 	"Name": "Player", # 이름
-	"SpriteColor": "Beige" # 선택한 플레이어 스프라이트 이미지 인덱스
+	"SpriteColor": "Beige", # 선택한 플레이어 스프라이트 이미지 인덱스
+	"PlayerNodeInstance": null
 }
 
 # 스크립트 시작
@@ -82,3 +83,16 @@ func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
 	connected_players[peer_id] = my_player_data
 	player_connected.emit(peer_id, my_player_data)
+
+# 접속 플레이데이터에 캐릭터 노드 인스턴스 설정
+func assign_player_character_node(peer_id, node_instance):
+	connected_players[peer_id]["PlayerNodeInstance"] = node_instance
+
+#func send_message(message_text):
+	#var caller_peer_id = multiplayer.get_unique_id()
+	#send_message_to_other_player.rpc_id(caller_peer_id, message_text)
+#
+#@rpc("any_peer", "reliable", "call_local")
+#func send_message_to_other_player(message_text):
+	#var peer_id = multiplayer.get_remote_sender_id()
+	#connected_players[peer_id]["PlayerNodeInstance"].show_message(message_text)
