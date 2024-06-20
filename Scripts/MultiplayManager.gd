@@ -53,7 +53,7 @@ func create_chat_room(player_info: Dictionary, server_info: Dictionary, max_play
 		return error
 	# 멀티플레이어 피어 설정
 	multiplayer.multiplayer_peer = peer
-
+	
 	# 내 플레이어 데이터 설정 및 플레이어 연결 시그널 발동
 	my_player_data["Name"] = player_info["Name"]
 	my_player_data["SpriteColor"] = player_info["SpriteColor"]
@@ -114,3 +114,17 @@ func _on_server_disconnected():
 # 서버로 접속 시도 실패
 func _on_connection_failed():
 	multiplayer.multiplayer_peer = null
+
+# 멀티플레이 종료
+func close_multiplay():
+	multiplayer.multiplayer_peer = null
+	
+	for peer_id in connected_players.keys():
+		connected_players[peer_id]["PlayerNodeInstance"].queue_free()
+		
+	connected_players.clear()
+	my_player_data = {
+		"Name": "Player", # 이름
+		"SpriteColor": "Beige", # 선택한 플레이어 스프라이트 이미지 인덱스
+		"PlayerNodeInstance": null
+	}
