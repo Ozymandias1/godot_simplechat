@@ -13,6 +13,7 @@ const CHAT_BOX_MESSAGE_ITEM = preload("res://Scenes/ChatBoxMessageItem.tscn")
 func _ready():
 	MultiplayManager.player_connected.connect(_on_player_connected)
 	MultiplayManager.player_disconnected.connect(_on_player_disconnected)
+	MultiplayManager.server_disconnected.connect(_on_server_disconnected)
 
 	# 메시지가 입력되면 스크롤컨테이너의 스크롤 값을 조정해주기 위한 시그널 연결
 	scroll_container_chat_log.get_v_scroll_bar().changed.connect(_on_chatlog_v_scroll_changed)
@@ -80,7 +81,12 @@ func _unhandled_key_input(event):
 			var player_self = MultiplayManager.my_player_data["PlayerNodeInstance"]
 			player_self.is_move_enabled = false
 
-# 플레이어 접속 해제시 처리
+# 플레이어 접속 해제시 호출 시그널
 func _on_player_disconnected(_peer_id, player_info):
 	var message_text = "%s님이 나갔습니다." % player_info.Name
 	_add_message_to_chatlog(message_text)
+
+# 서버가 종료되었을시 호출 시그널
+func _on_server_disconnected():
+	var message_text = "서버가 종료되었습니다."
+	_add_message_to_chatlog(message_text)	

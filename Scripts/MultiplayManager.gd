@@ -3,6 +3,7 @@ extends Node
 
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id, player_info)
+signal server_disconnected
 
 # 접속한 모든 플레이어에 대한 정보(본인 포함)
 var connected_players = {}
@@ -19,8 +20,9 @@ func _ready():
 	# 접속
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.connected_to_server.connect(_on_connected_ok)
-	# 접속해제
+	# 접속 해제
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 # 씬 로드 함수
 @rpc("call_local", "reliable")
@@ -94,6 +96,16 @@ func assign_player_character_node(peer_id, node_instance):
 # 피어 접속 해제시 호출되는 콜백 시그널
 func _on_peer_disconnected(peer_id):
 	player_disconnected.emit(peer_id, connected_players[peer_id])
-	
+
 	connected_players[peer_id]["PlayerNodeInstance"].queue_free()
 	connected_players.erase(peer_id)
+
+# 서버가 종료 되었을 경우 호출되는 콜백 시그널
+func _on_server_disconnected():	
+	multiplayer.multiplayer_peer = null
+	
+	for peer_id in connected_players.keys():
+		connected_players[peer_id]["PlayerNodeInstance"].queue_free()
+	
+	connected_players.clear()
+	server_disconnected.emit()

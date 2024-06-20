@@ -27,8 +27,8 @@ func show_message(message: String):
 	message_container.add_message(message)
 
 # 업데이트
-func _process(delta):
-	if is_multiplayer_authority(): # 권한이 있는 경우만 입력 처리를 수행
+func _process(delta):	
+	if multiplayer.multiplayer_peer != null and is_multiplayer_authority(): # 권한이 있는 경우만 입력 처리를 수행
 		process_player_movement(delta)
 		process_player_animation()
 		
