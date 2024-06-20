@@ -21,4 +21,3 @@ func join_server(server_data: Dictionary):
 	
 	MultiplayManager.load_scene("res://Scenes/ChatRoom.tscn")
 	MultiplayManager.join_chat_room(server_data, player_info)
-	print("")

@@ -23,6 +23,8 @@ func _ready():
 	# 접속 해제
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
+	# 접속 실패
+	multiplayer.connection_failed.connect(_on_connection_failed)
 
 # 씬 로드 함수
 @rpc("call_local", "reliable")
@@ -70,7 +72,6 @@ func _get_local_ipv4_address():
 
 # 서버 입장
 func join_chat_room(server_data: Dictionary, player_info: Dictionary):
-	# { "RoomName": "사용자97의 서버", "IP": "172.30.1.15", "Port": 10000 }{ "Name": "사용자29", "SpriteColor": "Pink" }
 	# 내 플레이어 데이터 설정
 	my_player_data = player_info.duplicate()
 
@@ -109,3 +110,7 @@ func _on_server_disconnected():
 	
 	connected_players.clear()
 	server_disconnected.emit()
+
+# 서버로 접속 시도 실패
+func _on_connection_failed():
+	multiplayer.multiplayer_peer = null
