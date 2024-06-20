@@ -21,11 +21,5 @@ script = ExtResource("1_5vfxu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="TestTimer" type="Timer" parent="."]
-wait_time = 0.3
-autostart = true
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
-
-[connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]
