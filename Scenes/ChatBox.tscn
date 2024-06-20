@@ -50,6 +50,7 @@ placeholder_text = "메시지를 입력해 주십시오..."
 layout_mode = 2
 text = "전송"
 
+[connection signal="focus_entered" from="Container/Controls/LineEditInputMessage" to="." method="_on_line_edit_input_message_focus_entered"]
 [connection signal="focus_exited" from="Container/Controls/LineEditInputMessage" to="." method="_on_line_edit_input_message_focus_exited"]
 [connection signal="text_submitted" from="Container/Controls/LineEditInputMessage" to="." method="_on_line_edit_input_message_text_submitted"]
 [connection signal="pressed" from="Container/Controls/BtnSend" to="." method="_on_btn_send_pressed"]

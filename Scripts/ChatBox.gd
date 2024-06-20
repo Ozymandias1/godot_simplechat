@@ -12,6 +12,7 @@ const CHAT_BOX_MESSAGE_ITEM = preload("res://Scenes/ChatBoxMessageItem.tscn")
 # 스크립트 시작
 func _ready():
 	MultiplayManager.player_connected.connect(_on_player_connected)
+	MultiplayManager.player_disconnected.connect(_on_player_disconnected)
 
 	# 메시지가 입력되면 스크롤컨테이너의 스크롤 값을 조정해주기 위한 시그널 연결
 	scroll_container_chat_log.get_v_scroll_bar().changed.connect(_on_chatlog_v_scroll_changed)
@@ -45,7 +46,7 @@ func _remove_oldest_chatlog_message():
 	if chatlog_item_count > max_chatlog_item:
 		chat_log.get_child(0).queue_free() # 트리구조상 0번째것이 제일 오래된 채팅로그이므로
 
-# 사용자 접속시 처리
+# 플레이어 접속시 처리
 func _on_player_connected(_peer_id, player_info):
 	var message_text = "%s님이 접속하였습니다." % player_info.Name
 	_add_message_to_chatlog(message_text)
@@ -59,6 +60,11 @@ func _on_line_edit_input_message_text_submitted(new_text):
 		line_edit_input_message.text = ""
 		line_edit_input_message.release_focus()
 
+# 텍스트 입력 컨트롤 포커스 들어왔을때 처리
+func _on_line_edit_input_message_focus_entered():
+	var player_self = MultiplayManager.my_player_data["PlayerNodeInstance"]
+	player_self.is_move_enabled = false
+	
 # 텍스트 입력 컨트롤 포커스 잃었을때의 처리
 func _on_line_edit_input_message_focus_exited():
 	var player_self = MultiplayManager.my_player_data["PlayerNodeInstance"]
@@ -73,3 +79,8 @@ func _unhandled_key_input(event):
 			# 메시지 입력중에는 플레이어 캐릭터의 이동을 막는다.
 			var player_self = MultiplayManager.my_player_data["PlayerNodeInstance"]
 			player_self.is_move_enabled = false
+
+# 플레이어 접속 해제시 처리
+func _on_player_disconnected(_peer_id, player_info):
+	var message_text = "%s님이 나갔습니다." % player_info.Name
+	_add_message_to_chatlog(message_text)

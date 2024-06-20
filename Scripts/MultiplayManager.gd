@@ -2,6 +2,7 @@
 extends Node
 
 signal player_connected(peer_id, player_info)
+signal player_disconnected(peer_id, player_info)
 
 # 접속한 모든 플레이어에 대한 정보(본인 포함)
 var connected_players = {}
@@ -15,9 +16,11 @@ var my_player_data = {
 
 # 스크립트 시작
 func _ready():
+	# 접속
 	multiplayer.peer_connected.connect(_on_peer_connected)
-	
 	multiplayer.connected_to_server.connect(_on_connected_ok)
+	# 접속해제
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
 # 씬 로드 함수
 @rpc("call_local", "reliable")
@@ -28,7 +31,7 @@ func load_scene(scene_path):
 func _on_peer_connected(peer_id):
 	# 접속한 플레이어의 peer_id를 기준으로 플레이어 등록하는 함수를 모든 피어에서 호출
 	_add_player.rpc_id(peer_id, my_player_data)
-	
+
 # 피어 접속시 호출되는 플레이어 등록함수로 모든 피어에서 호출
 @rpc("any_peer", "reliable")
 func _add_player(player_info):
@@ -46,11 +49,11 @@ func create_chat_room(player_info: Dictionary, server_info: Dictionary, max_play
 		return error
 	# 멀티플레이어 피어 설정
 	multiplayer.multiplayer_peer = peer
-	
+
 	# 내 플레이어 데이터 설정 및 플레이어 연결 시그널 발동
 	my_player_data["Name"] = player_info["Name"]
 	my_player_data["SpriteColor"] = player_info["SpriteColor"]
-	connected_players[1] = my_player_data	
+	connected_players[1] = my_player_data
 	player_connected.emit(1, my_player_data)
 	# 서버 프라우져 브로드 캐스트 시작
 	var local_ipv4_address = _get_local_ipv4_address()
@@ -68,13 +71,13 @@ func join_chat_room(server_data: Dictionary, player_info: Dictionary):
 	# { "RoomName": "사용자97의 서버", "IP": "172.30.1.15", "Port": 10000 }{ "Name": "사용자29", "SpriteColor": "Pink" }
 	# 내 플레이어 데이터 설정
 	my_player_data = player_info.duplicate()
-	
+
 	# 클라이언트 피어 생성후 접속 시도
 	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_client(server_data.IP, server_data.Port)
 	if error:
 		printerr(error)
-	
+
 	# 클라이언트 피어 생성후 접속이 성공하면 멀티플레이 피어로 설정
 	multiplayer.multiplayer_peer = peer
 
@@ -87,3 +90,10 @@ func _on_connected_ok():
 # 접속 플레이데이터에 캐릭터 노드 인스턴스 설정
 func assign_player_character_node(peer_id, node_instance):
 	connected_players[peer_id]["PlayerNodeInstance"] = node_instance
+
+# 피어 접속 해제시 호출되는 콜백 시그널
+func _on_peer_disconnected(peer_id):
+	player_disconnected.emit(peer_id, connected_players[peer_id])
+	
+	connected_players[peer_id]["PlayerNodeInstance"].queue_free()
+	connected_players.erase(peer_id)
