@@ -34,6 +34,7 @@ func _on_player_connected(peer_id, player_info):
 		camera_2d.reparent(new_player, false)
 		new_player.z_index = 1
 
+# 핸들링 되지 않는 입력, Esc키가 눌리면 나가기 창을 표시한다
 func _unhandled_key_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ESCAPE:

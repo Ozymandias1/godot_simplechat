@@ -1,4 +1,5 @@
 # ServerBroadcaster.gd 서버 브로드캐스터, 서버 브라우져에서 서버정보 보내기/얻기를 위한 스크립트
+# Autoload를 사용하여 전역으로 사용한다.
 extends Node
 
 signal get_server_info_finished

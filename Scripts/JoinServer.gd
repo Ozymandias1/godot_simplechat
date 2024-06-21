@@ -1,4 +1,4 @@
-# JoinServer.gd 서버 접속 화면 스크립트
+# JoinServer.gd 서버 접속 화면
 extends Control
 
 @onready var player_setup = $Container/SetupContainer/PlayerSetup

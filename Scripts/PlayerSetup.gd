@@ -38,8 +38,3 @@ func get_player_info():
 		"Name": player_name,
 		"SpriteColor": sprite_names[selected_tex]
 	}
-
-#func _on_line_edit_nick_name_text_submitted(new_text):
-	#print(new_text)
-	#if new_text.is_empty():
-		#OS.alert("대화명을 입력해주십시오", "대화명 입력")

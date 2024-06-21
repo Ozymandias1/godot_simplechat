@@ -1,4 +1,4 @@
-# CreateServer.gd 서버 설정 스크립트
+# CreateServer.gd 서버 설정 화면
 extends Control
 
 @onready var player_setup = $Container/SetupContainer/PlayerSetup
