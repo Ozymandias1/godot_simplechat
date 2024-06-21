@@ -16,7 +16,7 @@ func _enter_tree():
 # 플레이어 이름표 텍스트 설정
 func set_player_name_tag_text(player_name: String):
 	name_tag.text = player_name
-	
+
 # 플레이어 이름 스프라이트 설정
 func set_player_sprite(sprite_color: String):
 	var sprite_path: String = "res://Data/Sprite_Player_%s.tres" % sprite_color
@@ -27,11 +27,12 @@ func show_message(message: String):
 	message_container.add_message(message)
 
 # 업데이트
-func _process(delta):	
+func _process(delta):
 	if multiplayer.multiplayer_peer != null and is_multiplayer_authority(): # 권한이 있는 경우만 입력 처리를 수행
 		process_player_movement(delta)
 		process_player_animation()
-		
+
+# 플레이어 이동 처리
 func process_player_movement(delta):
 	if is_move_enabled:
 		var horizontal_input = Input.get_axis("Move Left", "Move Right")
@@ -44,20 +45,20 @@ func process_player_animation():
 		if Input.is_action_pressed("Move Right"):
 			player_anim_sprite.play("Move")
 			player_anim_sprite.flip_h = false
-			
+
 		elif Input.is_action_pressed("Move Left"):
 			player_anim_sprite.play("Move")
 			player_anim_sprite.flip_h = true
-			
+
 		elif Input.is_action_pressed("Move Up"):
 			player_anim_sprite.play("Move")
 			player_anim_sprite.flip_h = false
-			
+
 		elif Input.is_action_pressed("Move Down"):
 			player_anim_sprite.play("Move")
 			player_anim_sprite.flip_h = true
-			
+
 		else:
 			player_anim_sprite.play("Idle")
 	else:
-		player_anim_sprite.play("Idle")	
+		player_anim_sprite.play("Idle")
